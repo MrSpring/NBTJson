@@ -1,5 +1,6 @@
 package dk.mrspring.javanbt.nbt;
 
+import dk.mrspring.javanbt.NBTJsonBaseWrapper;
 import net.minecraft.nbt.NBTBase;
 
 /**

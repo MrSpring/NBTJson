@@ -1,7 +1,7 @@
 package dk.mrspring.javanbt.nbt;
 
 import com.google.gson.internal.LinkedTreeMap;
-import dk.mrspring.javanbt.NBTJson;
+import dk.mrspring.javanbt.NBTJsonDecompile;
 import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.Map;
@@ -22,6 +22,6 @@ public class NBTJsonCompound extends NBTJsonBase<NBTTagCompound>
     @Override
     public NBTTagCompound makeNBTTag()
     {
-        return NBTJson.createFromJsonObject(this.value);
+        return NBTJsonDecompile.createFromJsonObject(this.value);
     }
 }

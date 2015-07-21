@@ -1,0 +1,33 @@
+package dk.mrspring.javanbt;
+
+import com.google.gson.internal.LinkedTreeMap;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * Created by Konrad on 21-07-2015.
+ */
+public class NBTJsonCompile
+{
+    public static Object createJsonFromObject(NBTTagCompound compound)
+    {
+        Map<String, NBTJsonBaseWrapper> map = new LinkedTreeMap<String, NBTJsonBaseWrapper>();
+        for (String tagName : (Set<String>) compound.func_150296_c())
+        {
+            NBTBase tagValue = compound.getTag(tagName);
+            NBTJsonBaseWrapper wrapper = compileTag(tagValue);
+            if (wrapper != null) map.put(tagName, wrapper);
+        }
+        return map;
+    }
+
+    public static NBTJsonBaseWrapper compileTag(NBTBase tag)
+    {
+        int typeId = tag.getId();
+        NBTType type = NBTType.fromId(typeId);
+        return type.makeWrapper(tag);
+    }
+}

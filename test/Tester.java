@@ -1,13 +1,9 @@
 import com.google.gson.Gson;
-import dk.mrspring.javanbt.NBTJson;
+import com.google.gson.GsonBuilder;
+import dk.mrspring.javanbt.NBTJsonCompile;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import org.apache.logging.log4j.LogManager;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Arrays;
+import net.minecraft.nbt.NBTTagString;
 
 /**
  * Created by Konrad on 15-07-2015.
@@ -60,13 +56,13 @@ public class Tester
                         "          \"value\": \"This is a String value. Love me! <3\"\n" +
                         "        },\n" +
                         "        \"list_value\": {\n" +
-                        "          \"nbt_type\": 9,\n" +
+                        "          \"nbt_type\": \"LIST\",\n" +
                         "          \"value\": [\n" +
                         "            {\n" +
                         "              \"nbt_type\": 8,\n" +
                         "              \"value\": \"This is the first entry in the list.\"\n" +
                         "            }, {\n" +
-                        "              \"nbt_type\": 8,\n" +
+                        "              \"nbt_type\": \"STRING\",\n" +
                         "              \"value\": \"This is the second thingy.\"\n" +
                         "            }\n" +
                         "          ]\n" +
@@ -92,8 +88,31 @@ public class Tester
                         "    }\n" +
                         "  }\n" +
                         "}";
-        ItemWrapper item = gson.fromJson(json, ItemWrapper.class);
-        NBTTagCompound compound = NBTJson.createFromJsonObject(item.tag);
+//        ItemWrapper item = gson.fromJson(json, ItemWrapper.class);
+
+        NBTTagCompound compound = new NBTTagCompound();
+
+        compound.setByte("byte_value", (byte) 2);
+        compound.setShort("short_value", (short) 3);
+        compound.setInteger("integer_value", 1337);
+        compound.setLong("long_value", 1335485513887954L);
+        compound.setFloat("float_value", 13.37F);
+        compound.setDouble("double_value", 6006.13D);
+        compound.setByteArray("byte_array_value", new byte[]{7, 8, 9, 4, 5, 6, 1, 2, 3});
+        compound.setString("string_value", "This is a String value. Love me! <3");
+        NBTTagList list = new NBTTagList();
+        list.appendTag(new NBTTagString("This is the first entry in the list."));
+        list.appendTag(new NBTTagString("This is the second thingy."));
+        compound.setTag("list_value", list);
+        NBTTagCompound comp = new NBTTagCompound();
+        comp.setString("tag_in_compound_first", "This is the first entry in the compound.");
+        comp.setDouble("tag_in_compound_second", 13.37D);
+        compound.setTag("compound_value", comp);
+        compound.setIntArray("integer_array_value", new int[]{3, 2, 1, 6, 5, 4, 9, 8, 7});
+
+        System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(NBTJsonCompile.createJsonFromObject(compound)));
+
+        /*NBTTagCompound compound = NBTJsonDecompile.createFromJsonObject(item.tag);
 
         System.out.println("Got compound");
 
@@ -192,13 +211,13 @@ public class Tester
                 if (value.hasKey("tag_in_compound_first", 8))
                 {
                     String first = value.getString("tag_in_compound_first");
-                    System.out.println("Found first: "+first);
-                }else System.out.println("First not found.");
+                    System.out.println("Found first: " + first);
+                } else System.out.println("First not found.");
                 if (value.hasKey("tag_in_compound_second", 6))
                 {
-                    double second =value.getDouble("tag_in_compound_second");
-                    System.out.println("Found second: "+second);
-                }else System.out.println("Second not found.");
+                    double second = value.getDouble("tag_in_compound_second");
+                    System.out.println("Found second: " + second);
+                } else System.out.println("Second not found.");
             } else System.out.println("Compound value not found.");
 
             System.out.println("");
@@ -211,6 +230,6 @@ public class Tester
 
             System.out.println("");
 
-        } else System.out.println("Test compound not found.");
+        } else System.out.println("Test compound not found.");*/
     }
 }

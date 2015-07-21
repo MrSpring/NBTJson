@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by Konrad on 15-07-2015.
  */
-public class NBTJson
+public class NBTJsonDecompile
 {
     private static GsonBuilder builder = new GsonBuilder();
     private static Gson gson = builder.create();
@@ -21,7 +21,7 @@ public class NBTJson
     {
 //        System.out.println(json.getClass().getName());
         if (!(json instanceof LinkedTreeMap)) return new NBTTagCompound();
-        LinkedTreeMap<String, Object> map = (LinkedTreeMap<String, Object>) json;
+        Map<String, Object> map = (LinkedTreeMap<String, Object>) json;
         NBTTagCompound compound = new NBTTagCompound();
         for (Map.Entry<String, Object> entry : map.entrySet())
         {
