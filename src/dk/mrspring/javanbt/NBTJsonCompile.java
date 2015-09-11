@@ -1,5 +1,6 @@
 package dk.mrspring.javanbt;
 
+import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -29,5 +30,12 @@ public class NBTJsonCompile
         int typeId = tag.getId();
         NBTType type = NBTType.fromId(typeId);
         return type.makeWrapper(tag);
+    }
+
+    public static String createJsonStringFromCompound(NBTTagCompound compound)
+    {
+        Object o = createJsonFromObject(compound);
+        Gson gson = new Gson();
+        return gson.toJson(o);
     }
 }
