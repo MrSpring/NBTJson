@@ -27,7 +27,7 @@ public enum NBTType
                 @Override
                 public NBTJsonBaseWrapper makeWrapper(NBTBase tag)
                 {
-                    return new NBTJsonBaseWrapper(getId(), ((NBTTagByte) tag).func_150290_f());
+                    return new NBTJsonBaseWrapper(getId(), ((NBTTagByte) tag).getByte());
                 }
             },
     SHORT(2)
@@ -41,7 +41,7 @@ public enum NBTType
                 @Override
                 public NBTJsonBaseWrapper makeWrapper(NBTBase tag)
                 {
-                    return new NBTJsonBaseWrapper(getId(), ((NBTTagShort) tag).func_150289_e());
+                    return new NBTJsonBaseWrapper(getId(), ((NBTTagShort) tag).getShort());
                 }
             },
     INTEGER(3)
@@ -55,7 +55,7 @@ public enum NBTType
                 @Override
                 public NBTJsonBaseWrapper makeWrapper(NBTBase tag)
                 {
-                    return new NBTJsonBaseWrapper(getId(), ((NBTTagInt) tag).func_150287_d());
+                    return new NBTJsonBaseWrapper(getId(), ((NBTTagInt) tag).getInt());
                 }
             },
     LONG(4)
@@ -69,7 +69,7 @@ public enum NBTType
                 @Override
                 public NBTJsonBaseWrapper makeWrapper(NBTBase tag)
                 {
-                    return new NBTJsonBaseWrapper(getId(), ((NBTTagLong) tag).func_150291_c());
+                    return new NBTJsonBaseWrapper(getId(), ((NBTTagLong) tag).getLong());
                 }
             },
     FLOAT(5)
@@ -83,7 +83,7 @@ public enum NBTType
                 @Override
                 public NBTJsonBaseWrapper makeWrapper(NBTBase tag)
                 {
-                    return new NBTJsonBaseWrapper(getId(), ((NBTTagFloat) tag).func_150288_h());
+                    return new NBTJsonBaseWrapper(getId(), ((NBTTagFloat) tag).getFloat());
                 }
             },
     DOUBLE(6)
@@ -97,7 +97,7 @@ public enum NBTType
                 @Override
                 public NBTJsonBaseWrapper makeWrapper(NBTBase tag)
                 {
-                    return new NBTJsonBaseWrapper(getId(), ((NBTTagDouble) tag).func_150286_g());
+                    return new NBTJsonBaseWrapper(getId(), ((NBTTagDouble) tag).getDouble());
                 }
             },
     BYTE_ARRAY(7)
@@ -111,7 +111,7 @@ public enum NBTType
                 @Override
                 public NBTJsonBaseWrapper makeWrapper(NBTBase tag)
                 {
-                    return new NBTJsonBaseWrapper(getId(), ((NBTTagByteArray) tag).func_150292_c());
+                    return new NBTJsonBaseWrapper(getId(), ((NBTTagByteArray) tag).getByteArray());
                 }
             },
     STRING(8)
@@ -125,7 +125,7 @@ public enum NBTType
                 @Override
                 public NBTJsonBaseWrapper makeWrapper(NBTBase tag)
                 {
-                    return new NBTJsonBaseWrapper(getId(), ((NBTTagString) tag).func_150285_a_());
+                    return new NBTJsonBaseWrapper(getId(), ((NBTTagString) tag).getString());
                 }
             },
     LIST(9)
@@ -165,7 +165,7 @@ public enum NBTType
 //                    return super.makeWrapper(tag);
                     Map<String, Object> tags = new LinkedTreeMap<String, Object>();
                     NBTTagCompound compound = (NBTTagCompound) tag;
-                    for (String tagName : (Set<String>) compound.func_150296_c())
+                    for (String tagName : (Set<String>) compound.getKeySet())
                     {
                         NBTBase tagFromCompound = compound.getTag(tagName);
                         if (tagFromCompound == null) continue;
@@ -186,7 +186,7 @@ public enum NBTType
                 @Override
                 public NBTJsonBaseWrapper makeWrapper(NBTBase tag)
                 {
-                    return new NBTJsonBaseWrapper(getId(), ((NBTTagIntArray) tag).func_150302_c());
+                    return new NBTJsonBaseWrapper(getId(), ((NBTTagIntArray) tag).getIntArray());
                 }
             };
 

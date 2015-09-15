@@ -16,7 +16,7 @@ public class NBTJsonCompile
     public static Object createJsonFromObject(NBTTagCompound compound)
     {
         Map<String, NBTJsonBaseWrapper> map = new LinkedTreeMap<String, NBTJsonBaseWrapper>();
-        for (String tagName : (Set<String>) compound.func_150296_c())
+        for (String tagName : (Set<String>) compound.getKeySet())
         {
             NBTBase tagValue = compound.getTag(tagName);
             NBTJsonBaseWrapper wrapper = compileTag(tagValue);
