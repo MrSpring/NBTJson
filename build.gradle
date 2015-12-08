@@ -18,7 +18,7 @@ buildscript {
 apply plugin: 'forge'
 apply plugin: 'maven-publish'
 
-version = "1.0.0-1.7.10"
+version = "1.0.1-1.7.10"
 group = "dk.mrspring"
 archivesBaseName = "NBTJson"
 
