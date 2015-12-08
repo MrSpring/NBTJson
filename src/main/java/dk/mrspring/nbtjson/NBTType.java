@@ -1,7 +1,7 @@
-package dk.mrspring.javanbt;
+package dk.mrspring.nbtjson;
 
 import com.google.gson.internal.LinkedTreeMap;
-import dk.mrspring.javanbt.nbt.*;
+import dk.mrspring.nbtjson.nbt.*;
 import net.minecraft.nbt.*;
 
 import java.util.ArrayList;

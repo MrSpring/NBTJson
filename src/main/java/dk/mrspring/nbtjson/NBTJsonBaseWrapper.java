@@ -1,4 +1,4 @@
-package dk.mrspring.javanbt;
+package dk.mrspring.nbtjson;
 
 /**
  * Created by Konrad on 15-07-2015.

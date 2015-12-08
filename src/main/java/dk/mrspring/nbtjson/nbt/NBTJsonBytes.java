@@ -1,4 +1,4 @@
-package dk.mrspring.javanbt.nbt;
+package dk.mrspring.nbtjson.nbt;
 
 import net.minecraft.nbt.NBTTagByteArray;
 import org.apache.commons.lang3.ArrayUtils;
